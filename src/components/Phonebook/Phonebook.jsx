@@ -1,13 +1,38 @@
 import React, { Component } from 'react';
 import { PhonebookBlock } from './Phonebook.styled';
+
 // import PropTypes from 'prop-types';
 
 class Phonebook extends Component {
+  // state = {
+  //   name: '',
+  //   number: '',
+  // };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const name = form.elements.name.value;
+    const number = form.elements.number.value;
+    // console.dir(name);
+
+    // this.setState({ name: name, number: number });
+
+    this.props.onAddContact(name, number);
+
+    form.reset();
+  };
+
+  // reset = () => {
+  //   this.setState(this.state.name);
+  //   this.setState(this.state.number);
+  // };
+
   render() {
     return (
       <div>
         <h3>Phonebook</h3>
-        <PhonebookBlock onSubmit={this.props.handleSubmit}>
+        <PhonebookBlock onSubmit={this.handleSubmit}>
           <label>
             Name:
             <input

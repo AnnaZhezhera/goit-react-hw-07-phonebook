@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import Filter from '../Filter/Filter';
 // import PropTypes from 'prop-types';
 
 class Contacts extends Component {
@@ -12,14 +13,7 @@ class Contacts extends Component {
     return (
       <div>
         <h3>Contacts</h3>
-        <label htmlFor="">
-          <input
-            type="text"
-            name="filter"
-            // value={this.props.filter}
-            onChange={this.props.changeFilter}
-          />
-        </label>
+        <Filter value={this.props.filter} onChange={this.props.changeFilter} />
         <ul>
           {filteredContacts.map(contact => (
             <li key={nanoid()}>
