@@ -4,11 +4,24 @@ import { nanoid } from 'nanoid';
 
 class Contacts extends Component {
   render() {
+    const normalizedFilter = this.props.filter.toLowerCase();
+    const filteredContacts = this.props.contacts.filter(contact => {
+      return contact.name.toLowerCase().includes(normalizedFilter);
+    });
+
     return (
       <div>
         <h3>Contacts</h3>
+        <label htmlFor="">
+          <input
+            type="text"
+            name="filter"
+            // value={this.props.filter}
+            onChange={this.props.changeFilter}
+          />
+        </label>
         <ul>
-          {this.props.contacts.map(contact => (
+          {filteredContacts.map(contact => (
             <li key={nanoid()}>
               {contact.name}: {contact.number}
             </li>
