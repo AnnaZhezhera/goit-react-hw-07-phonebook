@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const PhonebookWrapp = styled.div`
-  width: 100%;
+  width: 300px;
 `;
 
 export const PhonebookForm = styled.form`

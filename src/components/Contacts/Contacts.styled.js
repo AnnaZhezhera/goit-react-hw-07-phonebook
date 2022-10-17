@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ContactBlock = styled.div`
-  width: 400px;
+  width: 300px;
 `;
 
 export const ListOfContacts = styled.ul`

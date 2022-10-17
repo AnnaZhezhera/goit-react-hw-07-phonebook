@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 export const AppWrapp = styled.div`
   height: 100%;
-  width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+  align-content: center;
   display: flex;
   align-items: center;
   flex-direction: column;
