@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import Filter from '../Filter/Filter';
+import { ListOfContacts, FindContactWrapp } from './Contacts.styled';
 // import PropTypes from 'prop-types';
 
 class Contacts extends Component {
@@ -12,15 +13,26 @@ class Contacts extends Component {
 
     return (
       <div>
-        <h3>Contacts</h3>
-        <Filter value={this.props.filter} onChange={this.props.changeFilter} />
-        <ul>
+        <FindContactWrapp>
+          <h3>Contacts</h3>
+          <Filter
+            value={this.props.filter}
+            onChange={this.props.changeFilter}
+          />
+        </FindContactWrapp>
+        <ListOfContacts>
           {filteredContacts.map(contact => (
             <li key={nanoid()}>
               {contact.name}: {contact.number}
+              <button
+                type="button"
+                onClick={() => this.props.onDelete(contact.id)}
+              >
+                Delete
+              </button>
             </li>
           ))}
-        </ul>
+        </ListOfContacts>
       </div>
     );
   }

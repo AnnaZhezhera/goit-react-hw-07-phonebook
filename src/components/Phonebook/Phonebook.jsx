@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PhonebookBlock } from './Phonebook.styled';
+import { PhonebookForm, PhonebookWrapp } from './Phonebook.styled';
 
 // import PropTypes from 'prop-types';
 
@@ -45,9 +45,9 @@ class Phonebook extends Component {
 
   render() {
     return (
-      <div>
+      <PhonebookWrapp>
         <h3>Phonebook</h3>
-        <PhonebookBlock onSubmit={this.handleSubmit}>
+        <PhonebookForm onSubmit={this.handleSubmit}>
           <label>
             Name:
             <input
@@ -71,8 +71,8 @@ class Phonebook extends Component {
           <div>
             <input type="submit" value="Add contact" />
           </div>
-        </PhonebookBlock>
-      </div>
+        </PhonebookForm>
+      </PhonebookWrapp>
     );
   }
 }

@@ -26,6 +26,14 @@ export class App extends Component {
     this.setState({ filter: event.currentTarget.value });
   };
 
+  // userId = "id-1"
+  handleRemoveClick = userId => {
+    let filteredArray = this.state.contacts.filter(
+      contact => contact.id !== userId
+    );
+    this.setState({ contacts: filteredArray });
+  };
+
   render() {
     return (
       <AppWrapp>
@@ -34,11 +42,13 @@ export class App extends Component {
           contacts={this.state.contacts}
         />
         <Contacts
-          name={this.state.name}
+          // name={this.state.name}
           contacts={this.state.contacts}
-          number={this.state.number}
+          // number={this.state.number}
+
           filter={this.state.filter}
           changeFilter={this.changeFilter}
+          onDelete={this.handleRemoveClick}
         />
       </AppWrapp>
     );

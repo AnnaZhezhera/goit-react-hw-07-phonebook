@@ -1,9 +1,10 @@
 import React from 'react';
+import { FilterBlock } from './FilterBlock.styled';
 
 const Filter = ({ value, onChange }) => (
-  <label htmlFor="">
+  <FilterBlock htmlFor="">
     Find contacts by name
     <input type="text" name="filter" value={value} onChange={onChange} />
-  </label>
+  </FilterBlock>
 );
 export default Filter;
