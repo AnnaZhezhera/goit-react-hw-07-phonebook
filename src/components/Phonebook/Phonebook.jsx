@@ -17,11 +17,26 @@ class Phonebook extends Component {
     // console.dir(name);
 
     // this.setState({ name: name, number: number });
+    // console.log(this.props.contacts.map(contact => console.log(contact.name)));
+    const existingInput = this.props.contacts.filter(contact => {
+      console.log('contact', contact);
+      console.log('name value', contact.name);
+      return contact.name.toLowerCase() === name.toLowerCase();
+    });
 
-    this.props.onAddContact(name, number);
+    if (existingInput.length === 0) {
+      this.props.onAddContact(name, number);
+    } else {
+      alert(`${name} is already in contacts.`);
+    }
 
     form.reset();
   };
+
+  //const normalizedFilter = this.props.filter.toLowerCase();
+  //  const filteredContacts = this.props.contacts.filter(contact => {
+  //  return contact.name.toLowerCase().includes(this.props.filter.toLowerCase());
+  //  });
 
   // reset = () => {
   //   this.setState(this.state.name);

@@ -29,7 +29,10 @@ export class App extends Component {
   render() {
     return (
       <AppWrapp>
-        <Phonebook onAddContact={this.addContact} />
+        <Phonebook
+          onAddContact={this.addContact}
+          contacts={this.state.contacts}
+        />
         <Contacts
           name={this.state.name}
           contacts={this.state.contacts}
