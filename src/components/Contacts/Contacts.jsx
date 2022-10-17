@@ -2,9 +2,21 @@ import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import Filter from '../Filter/Filter';
 import { ListOfContacts, FindContactWrapp } from './Contacts.styled';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Contacts extends Component {
+  static propTypes = {
+    contacts: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+        number: PropTypes.string,
+      })
+    ),
+    filter: PropTypes.string,
+    changeFilter: PropTypes.func,
+  };
+
   render() {
     const normalizedFilter = this.props.filter.toLowerCase();
     const filteredContacts = this.props.contacts.filter(contact => {

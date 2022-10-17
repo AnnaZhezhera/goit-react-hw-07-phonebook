@@ -2,8 +2,22 @@ import React, { Component } from 'react';
 import { AppWrapp } from './App.styled';
 import Phonebook from './Phonebook/Phonebook';
 import Contacts from './Contacts/Contacts';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
+  static propTypes = {
+    contacts: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+        number: PropTypes.string,
+      })
+    ),
+    filter: PropTypes.string,
+    changeFilter: PropTypes.func,
+    addContact: PropTypes.func,
+    handleRemoveClick: PropTypes.func,
+  };
   state = {
     // contacts: [],
     contacts: [

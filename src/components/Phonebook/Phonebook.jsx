@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import { PhonebookForm, PhonebookWrapp } from './Phonebook.styled';
-
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Phonebook extends Component {
+  static propTypes = {
+    contacts: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+        number: PropTypes.string,
+      })
+    ),
+    onAddContact: PropTypes.func,
+  };
   // state = {
   //   name: '',
   //   number: '',
@@ -19,8 +28,8 @@ class Phonebook extends Component {
     // this.setState({ name: name, number: number });
     // console.log(this.props.contacts.map(contact => console.log(contact.name)));
     const existingInput = this.props.contacts.filter(contact => {
-      console.log('contact', contact);
-      console.log('name value', contact.name);
+      // console.log('contact', contact);
+      // console.log('name value', contact.name);
       return contact.name.toLowerCase() === name.toLowerCase();
     });
 
