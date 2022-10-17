@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const FilterBlock = styled.label`
+  display: flex;
+  flex-direction: column;
+
   input {
-    margin-left: 10px;
+    width: 200px;
   }
 `;

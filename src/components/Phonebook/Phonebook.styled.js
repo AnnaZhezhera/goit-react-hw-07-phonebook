@@ -17,7 +17,6 @@ export const PhonebookForm = styled.form`
 
   input {
     margin-bottom: 10px;
-    margin-left: 5px;
     width: 200px;
   }
 

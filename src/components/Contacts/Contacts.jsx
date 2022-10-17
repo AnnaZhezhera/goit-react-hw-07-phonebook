@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import Filter from '../Filter/Filter';
-import { ListOfContacts, FindContactWrapp } from './Contacts.styled';
+import {
+  ContactBlock,
+  ListOfContacts,
+  FindContactWrapp,
+} from './Contacts.styled';
 import PropTypes from 'prop-types';
 
 class Contacts extends Component {
@@ -24,7 +28,7 @@ class Contacts extends Component {
     });
 
     return (
-      <div>
+      <ContactBlock>
         <FindContactWrapp>
           <h3>Contacts</h3>
           <Filter
@@ -45,7 +49,7 @@ class Contacts extends Component {
             </li>
           ))}
         </ListOfContacts>
-      </div>
+      </ContactBlock>
     );
   }
 }

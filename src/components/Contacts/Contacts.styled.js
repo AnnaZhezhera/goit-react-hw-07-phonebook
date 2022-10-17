@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const ContactBlock = styled.div`
+  width: 400px;
+`;
+
 export const ListOfContacts = styled.ul`
   min-height: 100px;
   padding-left: 0;
