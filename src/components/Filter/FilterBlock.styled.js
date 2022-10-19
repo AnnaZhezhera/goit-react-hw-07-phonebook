@@ -8,3 +8,9 @@ export const FilterBlock = styled.label`
     width: 200px;
   }
 `;
+
+export const FindContactWrapp = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+`;

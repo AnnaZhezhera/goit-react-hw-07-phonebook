@@ -24,9 +24,3 @@ export const ListOfContacts = styled.ul`
     }
   }
 `;
-
-export const FindContactWrapp = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-`;

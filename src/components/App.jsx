@@ -2,24 +2,10 @@ import React, { Component } from 'react';
 import { AppWrapp } from './App.styled';
 import Phonebook from './Phonebook/Phonebook';
 import Contacts from './Contacts/Contacts';
-import PropTypes from 'prop-types';
+import Filter from './Filter/Filter';
 
 export class App extends Component {
-  static propTypes = {
-    contacts: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        name: PropTypes.string,
-        number: PropTypes.string,
-      })
-    ),
-    filter: PropTypes.string,
-    changeFilter: PropTypes.func,
-    addContact: PropTypes.func,
-    handleRemoveClick: PropTypes.func,
-  };
   state = {
-    // contacts: [],
     contacts: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
       { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -51,15 +37,15 @@ export class App extends Component {
   render() {
     return (
       <AppWrapp>
+        <h1>Phonebook</h1>
         <Phonebook
           onAddContact={this.addContact}
           contacts={this.state.contacts}
         />
+        <h3>Contacts</h3>
+        <Filter value={this.state.filter} onChange={this.changeFilter} />
         <Contacts
-          // name={this.state.name}
           contacts={this.state.contacts}
-          // number={this.state.number}
-
           filter={this.state.filter}
           changeFilter={this.changeFilter}
           onDelete={this.handleRemoveClick}

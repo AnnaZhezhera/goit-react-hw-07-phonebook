@@ -1,35 +1,13 @@
 import React, { Component } from 'react';
 import { PhonebookForm, PhonebookWrapp } from './Phonebook.styled';
-import PropTypes from 'prop-types';
 
 class Phonebook extends Component {
-  static propTypes = {
-    contacts: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        name: PropTypes.string,
-        number: PropTypes.string,
-      })
-    ),
-    onAddContact: PropTypes.func,
-  };
-  // state = {
-  //   name: '',
-  //   number: '',
-  // };
-
   handleSubmit = event => {
     event.preventDefault();
     const form = event.currentTarget;
     const name = form.elements.name.value;
     const number = form.elements.number.value;
-    // console.dir(name);
-
-    // this.setState({ name: name, number: number });
-    // console.log(this.props.contacts.map(contact => console.log(contact.name)));
     const existingInput = this.props.contacts.filter(contact => {
-      // console.log('contact', contact);
-      // console.log('name value', contact.name);
       return contact.name.toLowerCase() === name.toLowerCase();
     });
 
@@ -42,20 +20,9 @@ class Phonebook extends Component {
     form.reset();
   };
 
-  //const normalizedFilter = this.props.filter.toLowerCase();
-  //  const filteredContacts = this.props.contacts.filter(contact => {
-  //  return contact.name.toLowerCase().includes(this.props.filter.toLowerCase());
-  //  });
-
-  // reset = () => {
-  //   this.setState(this.state.name);
-  //   this.setState(this.state.number);
-  // };
-
   render() {
     return (
       <PhonebookWrapp>
-        <h3>Phonebook</h3>
         <PhonebookForm onSubmit={this.handleSubmit}>
           <label>
             Name:

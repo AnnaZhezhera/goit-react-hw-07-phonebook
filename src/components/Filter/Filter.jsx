@@ -1,10 +1,18 @@
 import React from 'react';
-import { FilterBlock } from './FilterBlock.styled';
+import { FilterBlock, FindContactWrapp } from './FilterBlock.styled';
+import PropTypes from 'prop-types';
 
 const Filter = ({ value, onChange }) => (
-  <FilterBlock htmlFor="">
-    Find contacts by name
-    <input type="text" name="filter" value={value} onChange={onChange} />
-  </FilterBlock>
+  <FindContactWrapp>
+    <FilterBlock>
+      Find contacts by name
+      <input type="text" name="filter" value={value} onChange={onChange} />
+    </FilterBlock>
+  </FindContactWrapp>
 );
 export default Filter;
+
+Filter.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};
