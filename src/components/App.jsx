@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AppWrapp } from './App.styled';
-import Phonebook from './Phonebook/Phonebook';
-import Contacts from './Contacts/Contacts';
+import { Phonebook } from './Phonebook/Phonebook';
+import { Contacts } from './Contacts/Contacts';
 import Filter from './Filter/Filter';
 
 export class App extends Component {
@@ -16,7 +16,6 @@ export class App extends Component {
   };
 
   addContact = (name, number) => {
-    console.log(name, number);
     this.setState(previousState => ({
       contacts: [...previousState.contacts, { name, number }],
     }));
