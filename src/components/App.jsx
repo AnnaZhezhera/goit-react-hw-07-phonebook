@@ -33,6 +33,27 @@ export class App extends Component {
     this.setState({ contacts: filteredArray });
   };
 
+  componentDidMount() {
+    console.log('com ponentDidMount');
+    const stringContacts = localStorage.getItem('contacts');
+    const storageContacts = JSON.parse(stringContacts);
+    console.log('stringContacts', stringContacts);
+    console.log('storageContacts', storageContacts);
+
+    // (storageContacts !== null)true && (storageContacts.length > 0)false
+    if (storageContacts !== null) {
+      this.setState({ contacts: storageContacts });
+    }
+
+    return 'muka';
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   render() {
     return (
       <AppWrapp>
