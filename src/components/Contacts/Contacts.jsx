@@ -25,3 +25,15 @@ export const Contacts = ({ filter, contacts, onDelete }) => {
 };
 
 export default Contacts;
+
+Contacts.prototype = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      number: PropTypes.string,
+    })
+  ),
+  onDelete: PropTypes.func,
+  filter: PropTypes.string,
+};
