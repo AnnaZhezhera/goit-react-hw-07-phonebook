@@ -15,9 +15,12 @@ export class App extends Component {
     filter: '',
   };
 
-  addContact = (name, number) => {
+  addContact = (userName, userNumer, userId) => {
     this.setState(previousState => ({
-      contacts: [...previousState.contacts, { name, number }],
+      contacts: [
+        ...previousState.contacts,
+        { name: userName, number: userNumer, id: userId },
+      ],
     }));
   };
 
@@ -25,10 +28,9 @@ export class App extends Component {
     this.setState({ filter: event.currentTarget.value });
   };
 
-  // userId = "id-1"
-  handleRemoveClick = userId => {
+  handleRemoveClick = contactId => {
     let filteredArray = this.state.contacts.filter(
-      contact => contact.id !== userId
+      contact => contact.id !== contactId
     );
     this.setState({ contacts: filteredArray });
   };
@@ -37,7 +39,6 @@ export class App extends Component {
     const stringContacts = localStorage.getItem('contacts');
     const storageContacts = JSON.parse(stringContacts);
 
-    // (storageContacts !== null)true && (storageContacts.length > 0)false
     if (storageContacts !== null) {
       this.setState({ contacts: storageContacts });
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PhonebookForm, PhonebookWrapp } from './Phonebook.styled';
+import { nanoid } from 'nanoid';
 
 export const Phonebook = ({ contacts, onAddContact }) => {
   const handleSubmit = event => {
@@ -13,7 +14,7 @@ export const Phonebook = ({ contacts, onAddContact }) => {
     });
 
     if (existingInput.length === 0) {
-      onAddContact(name, number);
+      onAddContact(name, number, nanoid());
     } else {
       alert(`${name} is already in contacts.`);
     }

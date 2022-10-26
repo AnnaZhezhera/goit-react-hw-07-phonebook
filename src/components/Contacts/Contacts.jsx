@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+
 import { ContactBlock, ListOfContacts } from './Contacts.styled';
 
 export const Contacts = ({ filter, contacts, onDelete }) => {
@@ -13,7 +13,7 @@ export const Contacts = ({ filter, contacts, onDelete }) => {
     <ContactBlock>
       <ListOfContacts>
         {filteredContacts.map(contact => (
-          <li key={nanoid()}>
+          <li key={contact.id}>
             {contact.name}: {contact.number}
             <button type="button" onClick={() => onDelete(contact.id)}>
               Delete
