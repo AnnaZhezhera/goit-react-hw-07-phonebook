@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ContactBlock, ListOfContacts } from './Contacts.styled';
 
-export const Contacts = ({ filter, contacts, onDelete }) => {
+export default function Contacts({ filter, contacts, onDelete }) {
   const normalizedFilter = filter.toLowerCase();
   const filteredContacts = contacts.filter(contact => {
     return contact.name.toLowerCase().includes(normalizedFilter);
@@ -23,9 +23,7 @@ export const Contacts = ({ filter, contacts, onDelete }) => {
       </ListOfContacts>
     </ContactBlock>
   );
-};
-
-export default Contacts;
+}
 
 Contacts.prototype = {
   contacts: PropTypes.arrayOf(

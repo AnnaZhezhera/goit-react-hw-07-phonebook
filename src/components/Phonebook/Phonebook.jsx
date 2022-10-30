@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { PhonebookForm, PhonebookWrapp } from './Phonebook.styled';
 import { nanoid } from 'nanoid';
 
-export const Phonebook = ({ contacts, onAddContact }) => {
+export default function Phonebook({ contacts, onAddContact }) {
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -51,7 +51,7 @@ export const Phonebook = ({ contacts, onAddContact }) => {
       </PhonebookForm>
     </PhonebookWrapp>
   );
-};
+}
 
 Phonebook.prototype = {
   contacts: PropTypes.arrayOf(
