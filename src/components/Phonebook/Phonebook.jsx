@@ -1,20 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PhonebookForm, PhonebookWrapp } from './Phonebook.styled';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/actions';
+import { useSelector } from 'react-redux';
+import { getContacts } from '../../redux/selectors';
 
-export default function Phonebook({ contacts, onAddContact }) {
+export default function Phonebook() {
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
+
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.currentTarget;
     const name = form.elements.name.value;
     const number = form.elements.number.value;
-    const existingInput = contacts.filter(contact => {
+    const existingArray = contacts.filter(contact => {
       return contact.name.toLowerCase() === name.toLowerCase();
     });
 
-    if (existingInput.length === 0) {
-      onAddContact(name, number, nanoid());
+    if (existingArray.length === 0) {
+      dispatch(addContact(name, number));
     } else {
       alert(`${name} is already in contacts.`);
     }

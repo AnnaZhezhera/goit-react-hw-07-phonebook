@@ -1,21 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { useSelector } from 'react-redux';
+import { getContacts, getNameFilter } from '../../redux/selectors';
 import { ContactBlock, ListOfContacts } from './Contacts.styled';
+// import { statusFilters } from '../../redux/constants';
+import { deleteContact } from '../../redux/actions';
+import { useDispatch } from 'react-redux';
 
-export default function Contacts({ filter, contacts, onDelete }) {
-  const normalizedFilter = filter.toLowerCase();
+const getVisibleContacts = (contacts, filteredName) => {
+  if (!filteredName) {
+    return contacts;
+  }
+  const normalizedFilter = filteredName?.toLowerCase();
   const filteredContacts = contacts.filter(contact => {
     return contact.name.toLowerCase().includes(normalizedFilter);
   });
 
+  return filteredContacts;
+};
+
+export default function Contacts() {
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
+
+  const filteredName = useSelector(getNameFilter);
+  const visibleContacts = getVisibleContacts(contacts, filteredName);
+
+  const handleDelete = contact => dispatch(deleteContact(contact.id));
+
+  // const normalizedFilter = filter.toLowerCase();
+  // const filteredContacts = contacts.filter(contact => {
+  //   return contact.name.toLowerCase().includes(filter.toLowerCase());
+  // });
+
   return (
     <ContactBlock>
       <ListOfContacts>
-        {filteredContacts.map(contact => (
+        {visibleContacts.map(contact => (
           <li key={contact.id}>
             {contact.name}: {contact.number}
-            <button type="button" onClick={() => onDelete(contact.id)}>
+            <button type="button" onClick={() => handleDelete(contact)}>
               Delete
             </button>
           </li>
