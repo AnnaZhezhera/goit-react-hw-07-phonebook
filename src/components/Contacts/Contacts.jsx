@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { getContacts, getNameFilter } from '../../redux/selectors';
 import { ContactBlock, ListOfContacts } from './Contacts.styled';
-// import { statusFilters } from '../../redux/constants';
-import { deleteContact } from '../../redux/actions';
+import { deleteContact } from '../../redux/contactsSlice';
 import { useDispatch } from 'react-redux';
 
 const getVisibleContacts = (contacts, filteredName) => {
@@ -27,11 +26,6 @@ export default function Contacts() {
   const visibleContacts = getVisibleContacts(contacts, filteredName);
 
   const handleDelete = contact => dispatch(deleteContact(contact.id));
-
-  // const normalizedFilter = filter.toLowerCase();
-  // const filteredContacts = contacts.filter(contact => {
-  //   return contact.name.toLowerCase().includes(filter.toLowerCase());
-  // });
 
   return (
     <ContactBlock>

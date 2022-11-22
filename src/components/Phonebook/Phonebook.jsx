@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PhonebookForm, PhonebookWrapp } from './Phonebook.styled';
-// import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/actions';
+import { addContact } from 'redux/contactsSlice';
 import { useSelector } from 'react-redux';
 import { getContacts } from '../../redux/selectors';
 

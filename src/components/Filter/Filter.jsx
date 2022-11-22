@@ -1,7 +1,7 @@
 import React from 'react';
 import { FilterBlock, FindContactWrapp } from './FilterBlock.styled';
 import PropTypes from 'prop-types';
-import { setNameFilter } from '../../redux/actions';
+import { setNameFilter } from '../../redux/filterSlice';
 import { useDispatch } from 'react-redux';
 
 export default function Filter() {
