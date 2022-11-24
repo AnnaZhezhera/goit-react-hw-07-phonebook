@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getContacts, getNameFilter } from '../../redux/selectors';
 import { ContactBlock, ListOfContacts } from './Contacts.styled';
 import { deleteContact } from '../../redux/contactsSlice';
-import { useDispatch } from 'react-redux';
 
 const getVisibleContacts = (contacts, filteredName) => {
   if (!filteredName) {
