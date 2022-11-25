@@ -5,7 +5,7 @@ import { getContacts, getNameFilter } from '../../redux/selectors';
 import { ContactBlock, ListOfContacts } from './Contacts.styled';
 import { deleteContact } from '../../redux/contactsSlice';
 
-const getVisibleContacts = (contacts, filteredName) => {
+export const getVisibleContacts = (contacts, filteredName) => {
   if (!filteredName) {
     return contacts;
   }
@@ -20,8 +20,8 @@ const getVisibleContacts = (contacts, filteredName) => {
 export default function Contacts() {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
-
   const filteredName = useSelector(getNameFilter);
+
   const visibleContacts = getVisibleContacts(contacts, filteredName);
 
   const handleDelete = contact => dispatch(deleteContact(contact.id));

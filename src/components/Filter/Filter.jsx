@@ -2,10 +2,12 @@ import React from 'react';
 import { FilterBlock, FindContactWrapp } from './FilterBlock.styled';
 import PropTypes from 'prop-types';
 import { setNameFilter } from '../../redux/filterSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getNameFilter } from '../../redux/selectors';
 
 export default function Filter() {
   const dispatch = useDispatch();
+  const filteredName = useSelector(getNameFilter);
 
   return (
     <FindContactWrapp>
@@ -14,6 +16,7 @@ export default function Filter() {
         <input
           type="text"
           name="filter"
+          value={filteredName}
           onChange={event => dispatch(setNameFilter(event.currentTarget.value))}
         />
       </FilterBlock>
