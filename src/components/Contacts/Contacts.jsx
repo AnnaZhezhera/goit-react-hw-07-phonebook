@@ -58,14 +58,3 @@ export default function Contacts() {
     </ContactBlock>
   );
 }
-
-Contacts.prototype = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      phone: PropTypes.string,
-    })
-  ),
-  handleDelete: PropTypes.func,
-};

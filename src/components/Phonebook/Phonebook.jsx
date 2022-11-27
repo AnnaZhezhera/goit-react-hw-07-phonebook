@@ -57,14 +57,3 @@ export default function Phonebook() {
     </PhonebookWrapp>
   );
 }
-
-Phonebook.prototype = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      phone: PropTypes.string,
-    })
-  ),
-  handleSubmit: PropTypes.func,
-};

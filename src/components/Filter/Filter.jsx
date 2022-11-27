@@ -23,7 +23,3 @@ export default function Filter() {
     </FindContactWrapp>
   );
 }
-
-Filter.propTypes = {
-  value: PropTypes.string,
-};
