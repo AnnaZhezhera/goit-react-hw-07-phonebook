@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PhonebookForm, PhonebookWrapp } from './Phonebook.styled';
-import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../../redux/selectors';
+import { addContact } from 'redux/operations';
 
 export default function Phonebook() {
   const dispatch = useDispatch();
@@ -14,13 +13,13 @@ export default function Phonebook() {
     event.preventDefault();
     const form = event.currentTarget;
     const name = form.elements.name.value;
-    const number = form.elements.number.value;
+    const phone = form.elements.number.value;
     const existingArray = contacts.filter(contact => {
       return contact.name.toLowerCase() === name.toLowerCase();
     });
 
     if (existingArray.length === 0) {
-      dispatch(addContact(name, number));
+      dispatch(addContact({ name, phone }));
     } else {
       alert(`${name} is already in contacts.`);
     }
@@ -64,8 +63,8 @@ Phonebook.prototype = {
     PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
-      number: PropTypes.string,
+      phone: PropTypes.string,
     })
   ),
-  onAddContact: PropTypes.func,
+  handleSubmit: PropTypes.func,
 };
